@@ -1,0 +1,9 @@
+Documentation for the code
+**************************
+
+Modules
+=======
+
+.. automodule:: sparse_nmf
+   :members:
+

@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation for the code &mdash; Sparse NMF 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Sparse NMF 0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Sparse NMF’s documentation!" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Sparse NMF’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Sparse NMF 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="documentation-for-the-code">
+<h1>Documentation for the code<a class="headerlink" href="#documentation-for-the-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-sparse_nmf">
+<span id="modules"></span><h2>Modules<a class="headerlink" href="#module-sparse_nmf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="sparse_nmf.W_sparse_ith">
+<code class="descclassname">sparse_nmf.</code><code class="descname">W_sparse_ith</code><span class="sig-paren">(</span><em>W</em>, <em>HHt</em>, <em>cach</em>, <em>spar</em>, <em>i</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sparse_nmf.html#W_sparse_ith"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_nmf.W_sparse_ith" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the columns sequentially</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sparse_nmf.init_nmf">
+<code class="descclassname">sparse_nmf.</code><code class="descname">init_nmf</code><span class="sig-paren">(</span><em>X</em>, <em>r</em>, <em>spar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sparse_nmf.html#init_nmf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_nmf.init_nmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the matrix factors for NMF.</p>
+<p>Use Gaussian random numbers in [-1,1] to initialize</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X: {array}, shape = [n_features, n_samples]</strong></p>
+<p><strong>r: rank of factorization</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>W</strong> : {array}</p>
+<blockquote>
+<div><p>Feature matrix of the factorization</p>
+</div></blockquote>
+<p><strong>H</strong> : {array}</p>
+<blockquote>
+<div><p>Weight matrix of the factorization</p>
+</div></blockquote>
+<p class="last">where X ~ WH</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sparse_nmf.sparse_nmf">
+<code class="descclassname">sparse_nmf.</code><code class="descname">sparse_nmf</code><span class="sig-paren">(</span><em>X</em>, <em>r</em>, <em>maxiter</em>, <em>spar</em>, <em>W=None</em>, <em>H=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sparse_nmf.html#sparse_nmf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_nmf.sparse_nmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input data and the rank</p>
+<p>Learns a sparse NMF model given data X and the rank r.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : {array}, shape = [n_features, n_samples]</p>
+<p><strong>r</strong> : rank of factorization</p>
+<p><strong>maxiter</strong> : number of updates of the factor matrices</p>
+<p><strong>spar</strong> : sparsity of the features given by measure  sp(x)= (sqrt(n)-<a href="#id1"><span class="problematic" id="id2">|</span></a>x|_1/<a href="#id3"><span class="problematic" id="id4">|</span></a>x|_2 )/(sqrt(n)-1)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>W</strong> : {array}</p>
+<blockquote class="last">
+<div><p>Feature matrix to the sparse NMF problem.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sparse_nmf.sparse_opt">
+<code class="descclassname">sparse_nmf.</code><code class="descname">sparse_opt</code><span class="sig-paren">(</span><em>b</em>, <em>k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sparse_nmf.html#sparse_opt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_nmf.sparse_opt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project a vector onto a sparsity constraint</p>
+<p>Solves the projection problem by taking into account the
+symmetry of l1 and l2 constraints.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>b</strong> : sorted vector in decreasing value</p>
+<p><strong>k</strong> : Ratio of l1/l2 norms of a vector</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>z</strong> : closest vector satisfying the required sparsity constraint.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sparse_nmf.update_H">
+<code class="descclassname">sparse_nmf.</code><code class="descname">update_H</code><span class="sig-paren">(</span><em>X</em>, <em>W</em>, <em>H</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sparse_nmf.html#update_H"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_nmf.update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the weight matrix using the regular multiplicative updates</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sparse_nmf.update_W">
+<code class="descclassname">sparse_nmf.</code><code class="descname">update_W</code><span class="sig-paren">(</span><em>X</em>, <em>W</em>, <em>H</em>, <em>spar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sparse_nmf.html#update_W"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sparse_nmf.update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the feature matrix based on user-defined sparsity</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation for the code</a><ul>
+<li><a class="reference internal" href="#module-sparse_nmf">Modules</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Sparse NMF&#8217;s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/code.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Sparse NMF’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Sparse NMF 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Vamsi K. Potluru.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
