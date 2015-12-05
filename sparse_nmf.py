@@ -4,11 +4,12 @@ import scipy.io
 import pylab as plt
 
 def sparse_nmf(X, r, maxiter, spar, W = None, H = None):
-    """Learns a sparse NMF model given data X.
+    """Input data and the rank
+
+    Learns a sparse NMF model given data X and the rank r.
 
     Parameters
     ----------
-
     X : {array}, shape = [n_features, n_samples]
     r : rank of factorization
     maxiter : number of updates of the factor matrices
@@ -16,7 +17,6 @@ def sparse_nmf(X, r, maxiter, spar, W = None, H = None):
 
     Returns
     -------
-
     W : {array}
         Feature matrix to the sparse NMF problem.
 
@@ -43,6 +43,8 @@ def sparse_nmf(X, r, maxiter, spar, W = None, H = None):
 
 def init_nmf(X, r, spar):
     """ Initialize the matrix factors for NMF.
+
+    Use Gaussian random numbers in [-1,1] to initialize
 
     Parameters
     ----------
@@ -116,7 +118,7 @@ def sparse_opt(b, k):
     symmetry of l1 and l2 constraints.
 
     Parameters
-    ---------
+    ----------
     b : sorted vector in decreasing value
     k : Ratio of l1/l2 norms of a vector
 
