@@ -34,7 +34,7 @@ def sparse_nmf(X, r, maxiter, spar, W = None, H = None):
     Obj = np.zeros(maxiter)
     for i in range(maxiter):
         Obj[i] = np.linalg.norm(X - np.dot(W, H), 'fro')
-        print 'iter:', i + 1, 'Obj: ', Obj[i]
+        print('iter: {} Obj: {}'.format(i + 1,  Obj[i]))
         W = update_W(X, W, H, spar)
         H = update_H(X, W, H)
 
@@ -132,10 +132,10 @@ def sparse_opt(b, k):
     normb = np.cumsum(b * b)
     pnormb = np.arange(1, n + 1) * normb
     y = (pnormb - sumb * sumb) / (np.arange(1, n + 1) - k * k)
-    bot = np.ceil(k * k)
+    bot = np.int(np.ceil(k * k))
     z = np.zeros(n)
     if bot > n:
-        print 'Looks like the sparsity measure is not between 0 and 1\n'
+        print('Looks like the sparsity measure is not between 0 and 1\n')
         return
     obj = (-np.sqrt(y) * (np.arange(1, n + 1) + k) + sumb) / np.arange(1, n + 1)
     indx = np.argmax(obj[bot:n])
@@ -161,5 +161,5 @@ if __name__ == '__main__':
         plt.ion()
 
     plt.show(True)
-    import ipdb
-    ipdb.set_trace()
+    #import ipdb
+    #ipdb.set_trace()
